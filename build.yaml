@@ -1,0 +1,10 @@
+targets:
+  $default:
+    builders:
+      example_builder:
+        import: "package:mapsted_flutter/builder.dart"
+        builder_factories: ["exampleFileBuilder"]
+        build_extensions: { ".dart": [".generated/example_file.dart"] }
+        auto_apply: depedents
+        build_to: source
+        default_generate_for: -lib/**

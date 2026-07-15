@@ -1,0 +1,17 @@
+android {
+    buildFeatures {
+        dataBinding true
+    }
+
+    packagingOptions {
+        resources.excludes.add("META-INF/gradle/*")
+        resources.excludes.add("META-INF/*")
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    def mapstedSdkVersion = '6.0.14'
+    implementation "com.mapsted:sdk-map-ui:${mapstedSdkVersion}"
+}
+

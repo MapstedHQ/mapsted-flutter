@@ -1,0 +1,152 @@
+PROPRIETARY LICENSE AGREEMENT
+
+Copyright © 2014–2026 Mapsted Corp. All rights reserved.
+
+Effective Date: 2026-07-16 · Document ID: LA-MSDK-001 · Version: 1.0
+Contact: info@mapsted.com · https://www.mapsted.com/contact-us
+
+This software package — the Mapsted mobile SDK wrapper (as applicable, the
+Cordova/Ionic plugin `mapsted-cordova-plugin`, the Flutter plugin
+`mapsted_flutter`, or the React Native module `mapsted-react-native`),
+together with its source code, native platform bridge code (Android/Java/Kotlin
+and iOS/Swift), build configuration and hooks, the package manifest
+(`plugin.xml`, `pubspec.yaml`, and/or `package.json`), this LICENSE file,
+documentation, sample integration code, and any accompanying materials
+(collectively, the "Software") — is proprietary commercial software owned by
+Mapsted Corp. The Software is licensed, not sold. The Mapsted native SDK
+binaries (`.aar` / `.xcframework`) that the Software depends upon at build time
+are separately-licensed proprietary Mapsted Corp. artifacts and are not granted
+by this notice.
+
+NO LICENCE IS GRANTED BY DEFAULT. Installing, running, copying, or otherwise
+using the Software requires a valid, signed commercial agreement with
+Mapsted Corp. To obtain a licence for evaluation, sandbox, non-production,
+or production use, contact sales at https://www.mapsted.com/contact-us or
+info@mapsted.com.
+
+WHEN A LICENCE IS GRANTED under a signed commercial agreement, the grant is
+contingent upon Licensee's continued payment of all applicable fees and is
+provided on a non-exclusive, non-transferable, non-sublicensable, revocable,
+and limited basis, solely for the uses expressly permitted by that agreement.
+Any use not expressly permitted is prohibited.
+
+BACKEND SERVICES. The Mapsted positioning, mapping, property/venue data, and
+related cloud services that the Software accesses at runtime are operated
+exclusively by Mapsted Corp. and are not part of the Software distributed to
+Licensee; their availability and terms are governed solely by the signed
+commercial agreement. A valid Mapsted licence key is required to use them.
+
+NO PATENT LICENCE. No patent licence is granted, implied, or inferred by this
+notice or any licence granted hereunder. Any patent licence, if applicable,
+shall be addressed solely in the signed commercial agreement.
+
+EXPRESSLY PROHIBITED USES. Without Mapsted Corp.'s prior written
+authorisation, you may not:
+
+  1. install, run, copy, distribute, sublicence, lease, lend, or sell the
+     Software;
+  2. modify, create derivative works of, translate, or adapt the Software;
+  3. reverse engineer, decompile, disassemble, or otherwise attempt to
+     derive the source code or underlying ideas of the Software or of the
+     Mapsted native SDK binaries (`.aar` / `.xcframework`) it depends upon,
+     including any attempt to derive, reconstruct, or replicate any Mapsted
+     indoor-positioning, routing, mapping, or sensor-fusion algorithm, or the
+     wire format of any Mapsted backend service, except to the extent such
+     restrictions are expressly prohibited by law;
+  4. remove, obscure, or circumvent any copyright, trademark, licence
+     notice, licence-key check, usage meter, authentication mechanism, or
+     other technical protection or attribution present in the Software;
+  5. white-label, rebrand, or redistribute the Software as, or as part of,
+     a third-party product or service, or use any Mapsted Corp. trademark
+     or trade name in a manner likely to cause confusion or imply
+     endorsement;
+  6. use the Software for competitive benchmarking, replication of
+     Mapsted's product, or development of a competing product.
+
+INTELLECTUAL PROPERTY. Mapsted Corp. retains all right, title, and interest
+in and to the Software, including all copyrights, trademarks, patents (Mapsted
+Corp. holds a portfolio of granted patents relating to indoor positioning and
+related technologies; a current list is available upon request from
+info@mapsted.com), trade secrets, moral rights (waived to the fullest extent
+permitted by applicable law), know-how, confidential information, and any
+other intellectual property rights embodied in or associated with the Software.
+No rights are granted beyond those expressly stated in the signed commercial
+agreement. No trademark licence is granted by this notice.
+
+CONFIDENTIALITY. Licensee agrees to treat as strictly confidential any
+non-public information about the Software's or the native SDK's internal
+protocols, API schemas, backend data formats, or wire-protocol structure
+observed in the course of permitted use. This obligation survives termination.
+
+EXPORT CONTROLS. Licensee represents that it is not located in, or a national
+or resident of, any country subject to sanctions administered by the Government
+of Canada (Global Affairs Canada), the United States Office of Foreign Assets
+Control (OFAC), the United Kingdom Office of Financial Sanctions
+Implementation (OFSI), or any other applicable sanctions authority, and that
+it will comply with all applicable export control laws and regulations,
+including the Canadian Export and Import Permits Act and Special Economic
+Measures Act, the United States Export Administration Regulations (EAR), and
+applicable EU or UK sanctions measures. The Software is classified EAR99.
+
+INDEMNIFICATION. Licensee shall indemnify, defend, and hold harmless Mapsted
+Corp. and its affiliates from any claims arising from Licensee's breach,
+unauthorised use, or Licensee's own applications. Licensee shall provide
+prompt written notice of any indemnifiable claim; failure to provide timely
+notice relieves Licensee of its obligations only to the extent Mapsted Corp.
+is materially prejudiced by the delay. Any IP indemnification by Mapsted Corp.
+in favour of Licensee shall be governed solely by the signed commercial
+agreement.
+
+THIRD-PARTY COMPONENTS. The Software may incorporate third-party open-source
+components; such components remain subject to their respective original
+licences, which do not extend to the Software as a whole. A list of such
+components and their licences is maintained separately in the project
+documentation under "Open Source Notices" (OSN-MSDK-001).
+
+WARRANTY DISCLAIMER. THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE",
+WITHOUT WARRANTY OF ANY KIND. MAPSTED CORP. DISCLAIMS ALL WARRANTIES,
+WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING WITHOUT LIMITATION THE
+IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+NON-INFRINGEMENT, AND ANY WARRANTIES ARISING FROM COURSE OF DEALING, USAGE,
+OR TRADE PRACTICE.
+
+LIMITATION OF LIABILITY. IN NO EVENT SHALL MAPSTED CORP. OR ITS AFFILIATES,
+OFFICERS, DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE FOR ANY INDIRECT,
+INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES (INCLUDING WITHOUT
+LIMITATION LOSS OF PROFITS, REVENUE, DATA, USE, OR GOODWILL) ARISING OUT OF
+OR IN CONNECTION WITH THE SOFTWARE OR THIS LICENCE, WHETHER BASED ON
+CONTRACT, TORT, STRICT LIABILITY, OR ANY OTHER LEGAL THEORY, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. To the extent direct damages are
+not excluded by applicable law, Mapsted Corp.'s aggregate liability shall not
+exceed the greater of CAD $100 or the fees paid by Licensee to Mapsted Corp.
+in the twelve (12) months preceding the claim.
+
+ASSIGNMENT. Licensee may not assign this Agreement without Mapsted Corp.'s
+prior written consent. A change of control of Licensee shall be deemed an
+assignment requiring such consent. Mapsted Corp. may assign this Agreement
+to any successor entity or acquirer of all or substantially all of Mapsted
+Corp.'s assets or business without Licensee's consent.
+
+TERMINATION. Any licence granted with respect to the Software terminates
+automatically upon: (a) any wilful breach of the Prohibited Uses or
+Intellectual Property provisions, without notice or opportunity to cure; or
+(b) any other material breach that remains uncured thirty (30) days after
+written notice from Mapsted Corp.; or (c) expiry or termination of the signed
+commercial agreement; or (d) Licensee initiating any IP infringement claim
+against Mapsted Corp. Upon termination, the licensee must cease all use of
+the Software and destroy or return all copies.
+
+GOVERNING LAW. This notice and any licence granted in connection with the
+Software shall be governed by the laws of the Province of Ontario and the
+federal laws of Canada applicable therein, except where the applicable signed
+commercial agreement specifies a different governing law. Absent such
+agreement, no use is authorised.
+
+------------------------------------------------------------------------
+
+CONTACT:   https://www.mapsted.com/contact-us
+           info@mapsted.com
+           Mapsted Corp. — registered office available upon written request
+           to info@mapsted.com
+
+DOCUMENT:  LA-MSDK-001 — Mapsted mobile SDK wrapper proprietary licence

@@ -1,0 +1,84 @@
+group = "com.mapsted"
+version = "1.0"
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("com.android.tools.build:gradle:7.2.1")
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url "https://mobilesdk.mapsted.com:8443/artifactory/gradle-mapsted" }
+    }
+}
+
+apply plugin: "com.android.library"
+
+
+def getExtOrIntegerDefault(name) {
+  return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties["Mapsted_" + name]).toInteger()
+}
+
+android {
+    if (project.android.hasProperty("namespace")){
+        namespace = "com.mapsted"
+    }
+
+    buildFeatures {
+        compose = true
+        dataBinding = true
+        buildConfig = true
+    }
+
+    packagingOptions {
+        resources.excludes.add("META-INF/gradle/*")
+        resources.excludes.add("META-INF/*")
+    }
+
+
+    compileSdk = getExtOrIntegerDefault("compileSdkVersion")
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdk = getExtOrIntegerDefault("minSdkVersion")
+        targetSdk getExtOrIntegerDefault("targetSdkVersion")
+    }
+
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        def mapstedSdkVersion = '6.0.14'
+        implementation "com.mapsted:sdk-map-ui:${mapstedSdkVersion}"
+        implementation "com.mapsted:sdk-map:${mapstedSdkVersion}"
+        implementation "com.mapsted:sdk-core:${mapstedSdkVersion}"
+
+        testImplementation("junit:junit:4.13.2")
+        testImplementation("org.mockito:mockito-core:5.0.0")
+    }
+
+    testOptions {
+        unitTests.all {
+            testLogging {
+               events "passed", "skipped", "failed", "standardOut", "standardError"
+               outputs.upToDateWhen {false}
+               showStandardStreams = true
+            }
+        }
+    }
+}
+
+
+// Run task to generate build.gradle during plugin installation
+// preBuild.dependsOn generateBuildGradle
