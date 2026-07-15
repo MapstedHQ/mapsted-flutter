@@ -11,6 +11,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    def mapstedSdkVersion = '6.0.14'
-    implementation "com.mapsted:sdk-map-ui:${mapstedSdkVersion}"
+    def mapstedSdkVersion = '26.7.1'
+    implementation "com.mapsted:android-sdk-ui:${mapstedSdkVersion}"
 }

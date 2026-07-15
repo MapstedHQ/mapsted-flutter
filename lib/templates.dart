@@ -1,6 +1,6 @@
 part of 'cli_commands.dart';
 
-const _iosMinVersion = 13.0;
+const _iosMinVersion = 16.0;
 
 const String _repositoriesGradle = '''
 /* Licensed to the Apache Software Foundation (ASF) under one
@@ -24,14 +24,17 @@ const String _repositoriesGradle = '''
 ext.repos = {
     google()
     mavenCentral()
-	  maven { url "https://jitpack.io" }
-	  maven { url "https://mobilesdk.mapsted.com:8443/artifactory/gradle-mapsted" }
+	  maven { url "https://mapstedhq.github.io/mapsted-android-maven" }
 }
 ''';
 
 const String _buildExtrasGradle = '''
 android {
     // Add your custom configurations here
+    defaultConfig {
+        // Required by the Mapsted SDK 26.7.1 AAR meta-data (manifest placeholders).
+        manifestPlaceholders += [versionCode: "1", dateString: new Date().format('yyyyMMdd')]
+    }
     packagingOptions {
                         exclude 'META-INF/LICENSE.md'
                         exclude 'META-INF/NOTICE.md'
@@ -96,5 +99,5 @@ const List<Map<String, String>> _iosPermissionList = [
 
 List<String> _iosSource = [
   "source 'https://cdn.cocoapods.org/'",
-  "source 'https://github.com/Mapsted/podspec-simulator.git'",
+  "source 'https://github.com/MapstedHQ/podspec.git'",
 ];

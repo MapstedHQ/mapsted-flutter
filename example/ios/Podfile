@@ -1,7 +1,6 @@
-source 'https://github.com/Mapsted/podspec-simulator.git'
-source 'https://github.com/Mapsted/podspec.git'
 source 'https://cdn.cocoapods.org/'
-platform :ios, '13.0'
+source 'https://github.com/MapstedHQ/podspec.git'
+platform :ios, '16.0'
 
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.

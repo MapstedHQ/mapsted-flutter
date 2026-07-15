@@ -4,23 +4,25 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'mapsted_flutter'
-  s.version          = '0.0.1'
-  s.summary          = 'A new Flutter plugin project.'
+  s.version          = '26.7.1'
+  s.summary          = "A Flutter plugin for Mapsted's indoor/outdoor location and mapping SDK (native 26.7.1)."
   s.description      = <<-DESC
-A new Flutter plugin project.
+A Flutter plugin for integrating Mapsted's advanced location and mapping technology,
+offering easy access to precise indoor and outdoor navigation features.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://developer.mapsted.com/mobile-sdk'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Mapsted' => 'apps@mapsted.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  # Swift/ObjC sources only; the storyboard is a RESOURCE (must be bundled, not compiled as source).
+  s.source_files = 'Classes/**/*.{swift,h,m}'
+  s.resources    = 'Classes/**/*.storyboard'
   s.dependency 'Flutter'
-  s.platform = :ios, '13.0'
+  s.platform = :ios, '16.0'
 
-  s.dependency 'mapsted-sdk-map', '6.1.9'
-  s.dependency 'mapsted-sdk-map-ui', '6.1.9'
-  s.dependency 'mapsted-sdk-geofence', '6.1.9'
-
+  # Native Mapsted SDK 26.7.1 (geofence folded into core at 26.7.1 — pod dropped).
+  s.dependency 'mapsted-sdk-map', '~> 26.7.1'
+  s.dependency 'mapsted-sdk-map-ui', '~> 26.7.1'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

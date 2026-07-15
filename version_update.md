@@ -1,28 +1,32 @@
-## For changing version of sdk and publish new version of plugin on pub.dev.
+## Changing the native SDK version and publishing a new plugin release
 
-## mapsted-flutter
+### HARD RULE — keep the version consistent with the native SDK
+The plugin's published version MUST equal the native Mapsted SDK version it wraps (e.g. native 26.7.1 →
+plugin `26.7.1`). Do **not** drift the plugin version away from the SDK version to dodge a registry collision.
 
-### 1. Open android/build.gradle file find sdk version and replace updated version number all place.
-
-### Android
+### 1. Android — `android/build.gradle`, `android/build-extra.gradle`, `android/app-build-extra.gradle`, `android/build.gradle.template`
 ```sh
-    def mapstedSdkVersion = '6.0.14'
+    def mapstedSdkVersion = '26.7.1'
+    implementation "com.mapsted:android-sdk-ui:${mapstedSdkVersion}"
+    implementation "com.mapsted:android-sdk-map:${mapstedSdkVersion}"
+    implementation "com.mapsted:android-sdk-core:${mapstedSdkVersion}"
 ```
+Repository: `maven { url = uri("https://mapstedhq.github.io/mapsted-android-maven") }`
+(NOT jitpack / Artifactory — removed at 26.7.1).
 
-### 2. Open mapsted_flutter.podspec file find sdk version and replace updated version number all place.
-
-### iOS
+### 2. iOS — `ios/mapsted_flutter.podspec`
 ```sh
-    s.dependency 'mapsted-sdk-map', '6.1.9'
-    s.dependency 'mapsted-sdk-map-ui', '6.1.9'
-    s.dependency 'mapsted-sdk-geofence', '6.1.9'
+    s.dependency 'mapsted-sdk-map', '~> 26.7.1'
+    s.dependency 'mapsted-sdk-map-ui', '~> 26.7.1'
+    # geofence folded into core at 26.7.1 — pod dropped
 ```
+Podfile sources: `cdn.cocoapods.org` + `github.com/MapstedHQ/podspec.git` (NOT podspec-simulator).
 
-### 3. Open pubspec.yaml file find version (version: <version_number>) and update version number.
+### 3. `pubspec.yaml`
+Set `version:` to match the native SDK version.
 
-
-### 4. Publish package
-```sh 
+### 4. Publish (operator-gated — public push)
+```sh
     dart pub publish --dry-run
     dart pub publish
 ```

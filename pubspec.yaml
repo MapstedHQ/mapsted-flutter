@@ -1,9 +1,9 @@
 name: mapsted_flutter
 description: "A Flutter plugin for integrating Mapsted's advanced location and mapping technology, offering easy access to precise indoor and outdoor navigation features."
-version: 0.0.9
-homepage: https://github.com/jdmapsted/mapsted-flutter.git
-repository: https://github.com/jdmapsted/mapsted-flutter
-issue_tracker: https://github.com/jdmapsted/mapsted-flutter/issues
+version: 26.7.1
+homepage: https://developer.mapsted.com/mobile-sdk
+repository: https://github.com/MapstedHQ/MapstedSampleFlutter
+issue_tracker: https://github.com/MapstedHQ/MapstedSampleFlutter/issues
 
 environment:
   sdk: ">=3.4.3 <4.0.0"

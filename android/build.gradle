@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:7.2.1")
+        classpath("com.android.tools.build:gradle:8.9.1")
     }
 }
 
@@ -16,8 +16,7 @@ rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
-        maven { url "https://mobilesdk.mapsted.com:8443/artifactory/gradle-mapsted" }
+        maven { url = uri("https://mapstedhq.github.io/mapsted-android-maven") }
     }
 }
 
@@ -34,7 +33,6 @@ android {
     }
 
     buildFeatures {
-        compose = true
         dataBinding = true
         buildConfig = true
     }
@@ -59,10 +57,14 @@ android {
 
     dependencies {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
-        def mapstedSdkVersion = '6.0.14'
-        implementation "com.mapsted:sdk-map-ui:${mapstedSdkVersion}"
-        implementation "com.mapsted:sdk-map:${mapstedSdkVersion}"
-        implementation "com.mapsted:sdk-core:${mapstedSdkVersion}"
+        def mapstedSdkVersion = '26.7.1'
+        implementation "com.mapsted:android-sdk-ui:${mapstedSdkVersion}"
+        implementation "com.mapsted:android-sdk-map:${mapstedSdkVersion}"
+        implementation "com.mapsted:android-sdk-core:${mapstedSdkVersion}"
+
+        // Direct dependencies of the wrapper bridge (previously transitive via the 6.x SDK).
+        implementation "androidx.appcompat:appcompat:1.7.0"
+        implementation "com.google.code.gson:gson:2.11.0"
 
         testImplementation("junit:junit:4.13.2")
         testImplementation("org.mockito:mockito-core:5.0.0")

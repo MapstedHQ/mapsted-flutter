@@ -1,78 +1,86 @@
-# Usage
+# mapsted_flutter
 
-First, add `mapsted_flutter` as a dependency in your pubspec.yaml file.
+A Flutter plugin for integrating Mapsted's advanced indoor/outdoor location and mapping technology.
+This release targets the **native Mapsted SDK 26.7.1**.
+
+## Install
+
+Add `mapsted_flutter` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  mapsted_flutter: ^0.0.9
+  mapsted_flutter: ^26.7.1
 ```
 
-Don't forget to `flutter pub get`.
+Then run `flutter pub get`.
 
+### Generate the platform config
 
-## Setting the mapsted plugin config
-Run below command in your project directory in terminal
+From your app's project directory:
 
-```yaml
+```sh
 dart run mapsted_flutter:create
 ```
 
-## Platform Specific Configurations
+This injects the required Maven repository (Android) and Podfile sources (iOS) into your project.
 
-### iOS 
+## Consumer requirements (breaking — documented)
 
-- Project/ios/Podfile Add source file on top.
+The Mapsted SDK 26.7.1 native artifacts set a hard toolchain floor. These are **major** requirements:
+
+| | Minimum |
+|---|---|
+| Android `minSdkVersion` | **26** |
+| Android Gradle Plugin | **8.9.1** |
+| Kotlin | **2.3.20** |
+| Gradle | **8.13** |
+| iOS deployment target | **16.0** |
+
+## Platform configuration
+
+### iOS
+
+Add these sources to the top of `ios/Podfile` (the `create` command does this for you):
 
 ```sh
 source 'https://cdn.cocoapods.org/'
+source 'https://github.com/MapstedHQ/podspec.git'
 
-# To run in simulator add below source target
-source 'https://github.com/Mapsted/podspec-simulator.git'
-
-# To run in device add below source target
-source 'https://github.com/Mapsted/podspec.git'
+platform :ios, '16.0'
 ```
 
-- Project/ios/Podfile set use frameworks in your app target
+Enable frameworks in your app target:
 
 ```sh
 use_frameworks!
 ```
 
-#### IMPORTANT
-- Add license file in Resources folder `your_ios_license.key`
-
+Add your Mapsted licence file to the iOS `Runner` resources: `your_ios_license.key`.
 
 ### Android
 
-1. Set the `minSdkVersion` in `android/app/build.gradle`:
+Set `minSdkVersion` to **26** in `android/app/build.gradle`:
 
 ```groovy
 android {
     defaultConfig {
-        minSdkVersion 24
+        minSdkVersion 26
+        // Required by the Mapsted SDK 26.7.1 AAR meta-data:
+        manifestPlaceholders += [versionCode: "1", dateString: new Date().format('yyyyMMdd')]
     }
 }
 ```
 
-Make sure to save your changes and sync your project with Gradle to apply these configurations.
+> `dart run mapsted_flutter:create` injects these placeholders for you via `build-extras.gradle`.
 
+The map opens in `com.mapsted.ui.map.MapstedMapActivity`; ensure your app theme derives from a
+Material/AppCompat theme. Add your Mapsted licence file under `android/app/src/main/assets/your_android_license.key`.
 
-#### IMPORTANT
-- Add license file in Assets folder('/app/src/main/assets') `your_android_license.key`
+## Usage
 
-
-
-### Example
+The plugin exposes a fullscreen map launcher:
 
 ```dart
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  MyHomePageState createState() => MyHomePageState();
-}
-
 class MyHomePageState extends State<MyHomePage> {
   final MapstedFlutter mapsted = MapstedFlutter();
 
@@ -87,9 +95,7 @@ class MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Mapsted Plugin Demo'),
-      ),
+      appBar: AppBar(title: const Text('Mapsted Plugin Demo')),
       body: Center(
         child: ElevatedButton(
           onPressed: launchMapActivity,
@@ -99,7 +105,6 @@ class MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
 ```
 
-See `example.dart` linked example for more info.
+See `example/` for a complete, runnable app.

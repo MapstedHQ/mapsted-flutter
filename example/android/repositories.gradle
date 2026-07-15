@@ -19,6 +19,5 @@
 ext.repos = {
     google()
     mavenCentral()
-	  maven { url "https://jitpack.io" }
-	  maven { url "https://mobilesdk.mapsted.com:8443/artifactory/gradle-mapsted" }
+	  maven { url "https://mapstedhq.github.io/mapsted-android-maven" }
 }
