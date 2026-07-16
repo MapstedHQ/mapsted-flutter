@@ -1,3 +1,11 @@
+## [26.7.1] - (2026-Jul-16)
+
+- Migrate to native Mapsted SDK **26.7.1** (Android `com.mapsted:android-sdk-*:26.7.1`, iOS `mapsted-sdk-map`/`-map-ui` `~> 26.7.1`).
+- **Breaking (consumer toolchain):** Android `minSdkVersion` 26, Kotlin 2.3.20, AGP 8.9.1, Gradle 8.13; iOS 16.
+- Android: repositories moved to the GitHub-Pages Maven; added the required `manifestPlaceholders` (versionCode/dateString); added `appcompat`/`gson`.
+- iOS: `mapsted-sdk-geofence` pod dropped (folded into core at 26.7.1); storyboard bundled as a resource; `RoutingRequestCallback` updated to the 26.7.1 signature.
+- `create` scaffolder now supports modern Kotlin-DSL (`build.gradle.kts`) Android projects and adds real permission usage descriptions (including Bluetooth).
+
 ## [0.0.9] - (2025-Jun-25)
 
 - Bump Mapsted Sdk Version.
