@@ -73,6 +73,22 @@ if (hasBuildExtras1) {
 }
 ''';
 
+String extraGradleApplyKts(String dateString) => '''
+
+// Required by the Mapsted SDK 26.7.1 AAR meta-data (manifest placeholders).
+// dateString is computed at scaffold time (Dart) to avoid Gradle-KTS java.* resolution issues.
+android {
+    defaultConfig {
+        manifestPlaceholders["versionCode"] = "1"
+        manifestPlaceholders["dateString"] = "$dateString"
+    }
+}
+''';
+
+// Kotlin-DSL (build.gradle.kts) projects: inject the 26.7.1 manifest placeholders in KTS syntax
+// (Groovy `apply from` / buildscript blocks are not used in modern Flutter android/app/build.gradle.kts).
+
+
 const String _themeStyle = '''
 <activity android:name="com.mapsted.ui.map.MapstedMapActivity" android:theme="@style/AppTheme" />
 ''';
@@ -84,16 +100,20 @@ const List<String> _permissionList = [
 
 const List<Map<String, String>> _iosPermissionList = [
   {
+    "key": "NSBluetoothAlwaysUsageDescription",
+    "string": "This app uses Bluetooth to detect nearby Mapsted beacons for accurate indoor positioning.",
+  },
+  {
     "key": "NSMotionUsageDescription",
-    "string": "Your motion description goes here",
+    "string": "This app uses motion data to improve indoor positioning accuracy.",
   },
   {
     "key": "NSLocationAlwaysUsageDescription",
-    "string": "Your location description goes here",
+    "string": "This app uses your location to show your position on the map and provide indoor and outdoor navigation.",
   },
   {
     "key": "NSLocationWhenInUseUsageDescription",
-    "string": "Your location description goes here",
+    "string": "This app uses your location to show your position on the map and provide indoor and outdoor navigation.",
   },
 ];
 

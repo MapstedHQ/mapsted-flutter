@@ -57,11 +57,27 @@ void createMapConfig() {
 /// This function is intended to be called internally by the [createMapConfig]
 /// function to handle the setup process.
 void _createScriptFiles() {
+  // Detect the Android project layout: modern Flutter uses Kotlin-DSL (build.gradle.kts),
+  // older projects use Groovy (build.gradle). The 26.7.1 manifest placeholders must be
+  // injected either way, in the correct syntax — otherwise the AAR manifest merge fails.
+  final bool useKts = File(appGradleKts).existsSync();
+
   _createGradleTemplate(file: repositoriesPath, template: _repositoriesGradle);
   _createGradleTemplate(file: buildExtrasGradle, template: _buildExtrasGradle);
-  _applyRepositoryIntoGradle(path: androidGradle, template: _buildScriptBloc);
-  _applyProjectInGradle(path: androidGradle, template: _allProjectBloc);
-  _applyExtraGradle(path: appGradle, template: _extraGradleApply);
+
+  if (useKts) {
+    // Kotlin-DSL: SDK repos resolve via the plugin; only the manifest placeholders need
+    // injecting, in KTS syntax. The Groovy buildscript/allprojects blocks do not apply here.
+    final now = DateTime.now();
+    final dateString = '${now.year}${now.month.toString().padLeft(2, '0')}'
+        '${now.day.toString().padLeft(2, '0')}';
+    _applyExtraGradle(
+        path: appGradleKts, template: extraGradleApplyKts(dateString));
+  } else {
+    _applyRepositoryIntoGradle(path: androidGradle, template: _buildScriptBloc);
+    _applyProjectInGradle(path: androidGradle, template: _allProjectBloc);
+    _applyExtraGradle(path: appGradle, template: _extraGradleApply);
+  }
 
   _applyPermission(path: mainifestFile, permissions: _permissionList);
   _aplyTheme(path: mainifestFile, theme: _themeStyle);

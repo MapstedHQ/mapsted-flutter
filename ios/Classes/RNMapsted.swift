@@ -135,11 +135,11 @@ extension RNMapstedViewController : CoreInitCallback {
 //MARK: - Routing Request Callback methods
 extension RNMapstedViewController: RoutingRequestCallback {
     public func onSuccess(routeResponse: MNRouteResponse) {
-        MapstedMapApi.shared.handleRouteResponse(routeResponse: routeResponse)
+        // 26.7.1: MapstedMapApi conforms to RoutingRequestCallback directly; no wrapper forwarding needed.
     }
-    
-    public func onError(errorCode: Int, errorMessage: String, alertIds: [String]) {
-        MapstedMapApi.shared.handleRouteError(errorCode: errorCode, errorMessage: errorMessage, alertIds: alertIds)
+
+    public func onError(routeResponse: MNRouteResponse) {
+        // 26.7.1: onError signature changed to (routeResponse:) — error carried in the response.
     }
 }
 

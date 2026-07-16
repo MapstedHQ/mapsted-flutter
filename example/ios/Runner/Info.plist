@@ -27,13 +27,13 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Your bluetooth description goes here</string>
+	<string>This app uses Bluetooth to detect nearby Mapsted beacons for accurate indoor positioning.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Your location description goes here</string>
+	<string>This app uses your location to show your position on the map and provide indoor and outdoor navigation.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your location description goes here</string>
+	<string>This app uses your location to show your position on the map and provide indoor and outdoor navigation.</string>
 	<key>NSMotionUsageDescription</key>
-	<string>Your motion description goes here</string>
+	<string>This app uses motion data to improve indoor positioning accuracy.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
