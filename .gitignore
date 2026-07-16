@@ -5,3 +5,7 @@ example/build/
 example/.dart_tool/
 example/android/.gradle/
 example/android/local.properties
+.DS_Store
+*.DS_Store
+.xcode.env.local
+**/ios/Flutter/ephemeral/
