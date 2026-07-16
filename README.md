@@ -5,11 +5,14 @@ This release targets the **native Mapsted SDK 26.7.1**.
 
 ## Install
 
-Add `mapsted_flutter` to your `pubspec.yaml`:
+Add `mapsted_flutter` to your `pubspec.yaml` as a git dependency:
 
 ```yaml
 dependencies:
-  mapsted_flutter: ^26.7.1
+  mapsted_flutter:
+    git:
+      url: https://github.com/MapstedHQ/mapsted-flutter.git
+      ref: v26.7.1
 ```
 
 Then run `flutter pub get`.
